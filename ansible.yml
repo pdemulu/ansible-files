@@ -1,20 +1,11 @@
 ---
-- hosts: webservers
-  become: True
+  hosts: all
   tasks: 
     - name : install apache2
       apt:
-        name: "httpd"
-        state: "present"
+        name: httpd
+        state: latest
     - name: start apache2
       service:
         name: httpd
-        state: present
-    - name: install nginx
-      apt:
-        name: nginx
-        state: present
-    - name: start nginx
-      service:
-        name: nginx
-        state: present
+        state: started
